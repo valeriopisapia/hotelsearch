@@ -13,8 +13,6 @@ This application will show the below functionalities:
 https://github.com/Swiip/generator-gulp-angular
 
 
-Technology used:
-
 ### Back End ###
 
 What you prefer.
