@@ -33,7 +33,7 @@ Git as version control system.
 
 ## **Getting Started** ##
 
-git clone 
+git clone https://github.com/valeriopisapia/hotelsearch.git
 
 cd hotelSearch
 
