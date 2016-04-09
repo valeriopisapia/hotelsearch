@@ -37,7 +37,8 @@ git clone https://github.com/valeriopisapia/hotelsearch.git
 
 cd hotelSearch
 
+bower install
 
-**Start with:**
+npm install
 
 gulp serve
