@@ -1,0 +1,74 @@
+<div class="container">
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      Search by City: <input type="text" ng-model="vm.search.detail.city"/>
+    </div>
+    <div class="col-md-6">
+      Orderby Name : <input type="checkbox" ng-model="vm.search.name">
+    </div>
+    <div class="col-md-6">
+      Orderby Id : <input type="checkbox" ng-model="vm.search.id">
+    </div>
+    <div class="col-md-6">
+      Search by Stars:
+      <select ng-model="vm.search.detail.stars">
+        <option value="0" ng-model="vm.stars0">0</option>
+        <option value="1" ng-model="vm.stars1">1</option>
+        <option value="2" ng-model="vm.stars2">2</option>
+        <option value="3" ng-model="vm.stars3">3</option>
+        <option value="4" ng-model="vm.stars4">4</option>
+        <option value="5" ng-model="vm.stars5">5</option>
+      </select>
+
+    </div>
+    <div class="col-md-12">
+      Search by Id:
+      <rzslider rz-slider-model="vm.slider.minValue"
+                rz-slider-high="vm.slider.maxValue"
+                rz-slider-options="vm.slider.options">
+      </rzslider>
+    </div>
+    <div class="col-md-12">
+      <button ng-click="vm.clearFilter()"> Clear Filter </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="row">
+        <table class="table table-condensed">
+          <tr dir-paginate="hotel in vm.hotels
+          | filtering:vm.search.detail.city:vm.search.detail.stars
+          | customOrderBy:vm.search.name:vm.search.id
+          | itemsPerPage: vm.pageSize" current-page="vm.currentPage">
+            <td class="info">
+              <b>Name</b>: {{hotel.detail.name}}<br>
+              <b>Stars</b>: {{hotel.detail.stars}}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="row">
+        <div ng-controller="OtherController">
+          <div class="text-center">
+            <dir-pagination-controls boundary-links="true"
+                                     template-url="app/main/dirPagination.tpl.html"></dir-pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <ng-map zoom="5" center="{{vm.hotels[0].position}}">
+        <marker ng-repeat="hotel in vm.hotels
+          | filtering:vm.search.detail.city:vm.search.detail.stars
+          | customOrderBy:vm.search.name:vm.search.id
+          | itemsPerPage: vm.pageSize" current-page="vm.currentPage"
+                position="{{hotel.position}}" id="{{hotel.detail.id}}"
+                on-click="vm.showInfoWindow(event, hotel)"></marker>
+      </ng-map>
+    </div>
+  </div>
+</div>
