@@ -8,6 +8,7 @@ This application will show the below functionalities:
  - using the google maps API (using ngmap lib);
  - dynamic table view (using angularUtils-pagination lib) where it shows the results;
  - (TO-DO)to improve the UI with bootstrap.
+ - (TO-DO)Nodejs backend
  
 ### Template used by Yeoman###
 https://github.com/Swiip/generator-gulp-angular
